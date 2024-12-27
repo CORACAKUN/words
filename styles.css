@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff5733, #ffc300, #33ff57, #33c3ff, #ff33c4);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    flex-direction: column;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+.word-collage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px red;
+}
+
+.word {
+    position: absolute;
+    font-weight: bold;
+    transform-origin: center;
+    word-break: break-word;
+    opacity: 0.8;
+}
+
+.word.large { font-size: 3rem; }
+.word.small { font-size: 1rem; }
+.word.medium { font-size: 2rem; }
+.word.x-large { font-size: 4rem; }
+.word.xx-large { font-size: 5rem; }
+
+.word.horizontal { transform: rotate(0deg); }
+.word.vertical { transform: rotate(90deg); }
+.word.diagonal { transform: rotate(-45deg); }
+
+#highlightWord {
+    position: absolute;
+    font-size: 4rem;
+    font-weight: bold;
+    color: #f73409; 
+    z-index: 10;
+    opacity: 1;
+    background: rgba(134, 9, 9, 0.092);
+    backdrop-filter: blur(5px);
+    padding: 20px 1000px;
+    border-radius: 5px;
+}
+
+
+button {
+    position: absolute;
+    bottom: 20px;
+    font-size: 1rem;
+    background-color: #33FF57;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #28a745;
+}

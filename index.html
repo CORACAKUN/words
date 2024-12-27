@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Collage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="word-collage" id="wordCollage">
+    </div>
+
+    <button id="reloadButton">Reload Random Word</button>
+
+    <script>
+const wordsList = [
+    "Seeking Validation", "Mixed Feelings", "Uncomfortable", "Confused", "Boundaries",
+    "Hopeful", "Distraction", "Connection", "Happiness", "Lost",
+    "Memories", "Fear", "Nostalgia", "Excited", "Trust",
+    "Rejection", "Healing", "Freedom", "Love", "Awkwardness",
+    "Overthinking", "Clarity", "Support", "Courage", "Loneliness",
+    "Anxiety", "Balance", "Growth", "Patience", "Reflection",
+    "Acceptance", "Understanding", "Resilience", "Peace", "Optimism",
+    "Struggle", "Kindness", "Forgiveness", "Gratitude", "Empathy",
+    "Strength", "Determination", "Creativity", "Motivation", "Purpose",
+    "Relief", "Joy", "Sadness", "Regret", "Pride",
+    "Appreciation", "Self-Worth", "Insecurity", "Confidence", "Faith",
+    "Inspiration", "Passion", "Adventure", "Serenity", "Comfort",
+    "Fulfillment", "Success", "Ambition", "Curiosity", "Awareness",
+    "Mindfulness", "Encouragement", "Potential", "Discovery", "Belief",
+    "Opportunity", "Wisdom", "Risk", "Challenge", "Compassion",
+    "Intuition", "Harmony", "Sacrifice", "Determination", "Hope",
+    "Dedication", "Respect", "Vulnerability", "Energy", "Humility",
+    "Integrity", "Authenticity", "Kindred Spirit", "New Beginnings", "Perspective",
+    "Collaboration", "Innovation", "Destiny", "Legacy", "Imagination",
+    "Adventure", "Spontaneity", "Learning", "Discovery", "Enthusiasm",
+    "Persistence", "Friendship", "Authenticity", "Diversity", "Community",
+    "Creativity", "Expression", "Simplicity", "Balance", "Self-Reflection",
+    "Inner Peace", "Synergy", "Vision", "Transformation", "Leadership",
+    "Dreams", "Tenacity", "Humor", "Adaptability", "Change",
+    "Wonder", "Unity", "Trustworthiness", "Generosity", "Renewal",
+    "Foresight", "Effort", "Serendipity", "Belonging", "Empowerment"
+];
+
+
+        const sizes = ['small', 'medium', 'large', 'x-large', 'xx-large'];
+        const rotations = ['0deg', '90deg', '-45deg', '45deg'];
+        const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A133FF', '#FFC300', '#33FFF6'];
+
+        const collageContainer = document.getElementById('wordCollage');
+        const highlightWord = document.createElement('div');
+        highlightWord.id = 'highlightWord';
+        document.body.appendChild(highlightWord);
+
+
+        function generateWordCollage() {
+            collageContainer.innerHTML = '';
+            wordsList.forEach((word) => {
+                const wordElement = document.createElement('span');
+                wordElement.classList.add('word');
+
+                const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+                const randomRotation = rotations[Math.floor(Math.random() * rotations.length)];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                const randomTop = Math.random() * 100 + '%';
+                const randomLeft = Math.random() * 100 + '%';
+
+                wordElement.classList.add(randomSize);
+                wordElement.style.transform = `rotate(${randomRotation})`;
+                wordElement.style.color = randomColor;
+                wordElement.style.top = randomTop;
+                wordElement.style.left = randomLeft;
+
+                wordElement.textContent = word;
+                collageContainer.appendChild(wordElement);
+            });
+        }
+        function highlightRandomWord() {
+            const randomWord = wordsList[Math.floor(Math.random() * wordsList.length)];
+            highlightWord.textContent = randomWord;
+            highlightWord.style.top = '50%';
+            highlightWord.style.left = '50%';
+            highlightWord.style.transform = 'translate(-50%, -50%)';
+        }
+
+        generateWordCollage();
+        document.getElementById('reloadButton').addEventListener('click', () => {
+            generateWordCollage(); 
+            highlightRandomWord(); 
+        });
+    </script>
+</body>
+</html>
